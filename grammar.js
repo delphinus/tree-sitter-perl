@@ -626,6 +626,14 @@ module.exports = grammar({
       ),
     ),
 
+    function_like_block: $ => seq(
+        field(
+          'function_name',
+          alias(choice('do', 'eval'), $.identifier),
+        ),
+        $.block,
+    ),
+
     _block_statements: $ => choice(
       $._statement,
       seq($.return_expression, $.semi_colon),
@@ -807,6 +815,7 @@ module.exports = grammar({
       /@_/,
       /\$_/,
       /\$]/,
+      /\$\//,
       '$$',
       '$0',
       '$`',
@@ -872,6 +881,7 @@ module.exports = grammar({
       $._range_exp,
       $._assignment_exp,
       $._logical_verbal_or_xor,
+      $.function_like_block,
     ),
 
     unary_expression: $ => choice(
