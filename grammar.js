@@ -730,8 +730,6 @@ module.exports = grammar({
 
       // object oriented stuffs
       $.bless,
-      
-      $.special_variable,
 
       $.grep_or_map_function,
       $.join_function,
@@ -1272,6 +1270,7 @@ module.exports = grammar({
       $.scalar_variable,
       $.array_variable,
       $.hash_variable,
+      $.special_variable,
     ),
 
     _scalar_type: $ => choice(
